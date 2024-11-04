@@ -1,5 +1,5 @@
-import { Statuses, Directions, conflictMapping } from "@/constants";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Statuses, Directions, conflictMapping } from '@/constants';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   decrementCountdowns,
   getActiveDirections,
@@ -8,8 +8,8 @@ import {
   resetTrafficLightState,
   stopConflictingDirections,
   updateStatuses,
-} from "./timerUtils";
-import { getDirectionSettings } from "@/utils/storage";
+} from './timerUtils';
+import { getDirectionSettings } from '@/utils/storage';
 
 export interface IDirectionState {
   greenTime: number;
@@ -27,7 +27,7 @@ export interface ITimerState {
   order: (keyof typeof Directions)[];
   currentDirection: keyof typeof Directions;
   allRedPhase: boolean;
-  mode: "Manual" | "Automated";
+  mode: 'Manual' | 'Automated';
   showAllTimers: boolean;
 }
 
@@ -68,9 +68,9 @@ const initialState: ITimerState = {
     },
   },
   order: [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST],
-  currentDirection: "NORTH",
+  currentDirection: 'NORTH',
   allRedPhase: false,
-  mode: "Automated",
+  mode: 'Automated',
   showAllTimers: true,
 };
 
@@ -81,19 +81,19 @@ interface SetDirectionProps {
 }
 
 const timerSlice = createSlice({
-  name: "timer",
+  name: 'timer',
   initialState,
   reducers: {
-    setDirections(state, action: PayloadAction<ITimerState["directions"]>) {
+    setDirections(state, action: PayloadAction<ITimerState['directions']>) {
       state.directions = action.payload;
     },
     setAllRedPhase(state, action: PayloadAction<boolean>) {
       state.allRedPhase = action.payload;
     },
-    setMode(state, action: PayloadAction<ITimerState["mode"]>) {
+    setMode(state, action: PayloadAction<ITimerState['mode']>) {
       state.mode = action.payload;
-      if (action.payload === "Manual") {
-        state.currentDirection = "NORTH";
+      if (action.payload === 'Manual') {
+        state.currentDirection = 'NORTH';
         state.directions = resetTrafficLightState(state.directions);
       }
     },
@@ -161,10 +161,10 @@ const timerSlice = createSlice({
 });
 
 export const initializeTimers = createAsyncThunk(
-  "timer/initializeTimers",
+  'timer/initializeTimers',
   async (_, { dispatch }) => {
     // Fetch persistent directions from AsyncStorage
-    const persistentDir: ITimerState["directions"] | null =
+    const persistentDir: ITimerState['directions'] | null =
       await getDirectionSettings();
 
     if (!persistentDir) {
@@ -172,8 +172,8 @@ export const initializeTimers = createAsyncThunk(
       dispatch(setDirections(initialState.directions));
       return;
     }
-    console.log("persistentDir");
-    console.log(persistentDir["NORTH"]);
+    console.log('persistentDir');
+    console.log(persistentDir['NORTH']);
     // Dispatch the setDirections action with the loaded settings
     dispatch(setDirections(persistentDir));
 

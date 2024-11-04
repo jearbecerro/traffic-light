@@ -7,7 +7,11 @@ interface TimerInputProps {
   onChange: (direction: string, type: string, value: string) => void;
 }
 
-const TimerInput: React.FC<TimerInputProps> = ({ direction, timer, onChange }) => (
+const TimerInput: React.FC<TimerInputProps> = ({
+  direction,
+  timer,
+  onChange,
+}) => (
   <View style={styles.container}>
     <Text>{direction.charAt(0).toUpperCase() + direction.slice(1)} Lane</Text>
     <TextInput

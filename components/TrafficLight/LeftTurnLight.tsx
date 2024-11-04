@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 interface LightInterface {
-  type: "GO" | "STOP" | "CAUTION";
+  type: 'GO' | 'STOP' | 'CAUTION';
   active: boolean;
   flipArrow?: boolean;
   doBlink?: boolean; // Add this prop for blinking behavior
@@ -15,9 +15,9 @@ const LeftTurnLight = ({
   doBlink = false,
 }: LightInterface) => {
   const color = {
-    GO: "lightgreen",
-    STOP: "#FF0500",
-    CAUTION: "orange",
+    GO: 'lightgreen',
+    STOP: '#FF0500',
+    CAUTION: 'orange',
   };
 
   const [opacity, setOpacity] = useState<number>(active ? 1 : 0.5);
@@ -49,7 +49,7 @@ const LeftTurnLight = ({
         setOpacity((prev) => (prev === 1 ? 0.5 : 1));
       }, 250);
     } else {
-      setOpacity(active ? 1 : 0.5); // Ensure correct opacity when not blinking
+      setOpacity(active ? 1 : 0.5);
     }
 
     return () => {
@@ -63,7 +63,7 @@ const LeftTurnLight = ({
         styles.light,
         {
           opacity,
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           borderColor: color[type],
         },
       ]}
@@ -75,7 +75,7 @@ const LeftTurnLight = ({
           flipArrow ? { transform: [{ scaleX: -1 }] } : {},
         ]}
       >
-        {"➦"}
+        {'➦'}
       </Text>
     </View>
   );
@@ -89,15 +89,15 @@ const styles = StyleSheet.create({
     height: 18,
     borderRadius: 50,
     margin: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
     borderWidth: 1.5,
   },
   arrow: {
-    fontSize: 12, // Adjust font size to fit within the small circle
-    lineHeight: 13, // Match the height of the container to vertically center
-    fontWeight: "bold",
-    textAlign: "center",
+    fontSize: 12,
+    lineHeight: 13,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

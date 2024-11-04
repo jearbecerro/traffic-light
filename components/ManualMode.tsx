@@ -1,17 +1,16 @@
-import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { setDirectionStatus } from "@/redux/timerSlice";
-import { DirectionColors, TrafficLightColors } from "@/constants";
-import { Statuses, Directions } from "@/constants";
-import { RootState } from "@/redux/store";
-import { IStatuses } from "@/interfaces";
+import React from 'react';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDirectionStatus } from '@/redux/timerSlice';
+import { DirectionColors, TrafficLightColors } from '@/constants';
+import { Statuses, Directions } from '@/constants';
+import { RootState } from '@/redux/store';
+import { IStatuses } from '@/interfaces';
 
 const ManualMode = () => {
   const dispatch = useDispatch();
   const timerState = useSelector((state: RootState) => state.timer);
   const directions = timerState.directions;
-
 
   const handleDirectionPress = (
     direction: keyof typeof Directions,
@@ -51,8 +50,7 @@ const ManualMode = () => {
               backgroundColor: TrafficLightColors[directions.NORTH.leftStatus],
             },
           ]}
-          onPress={() => handleDirectionPress("NORTH", true)}
-          //disabled={isDirectionDisabled('NORTH', true)}
+          onPress={() => handleDirectionPress('NORTH', true)}
         >
           <Text
             style={[styles.buttonTextLeft, { transform: [{ scaleX: -1 }] }]}
@@ -68,8 +66,7 @@ const ManualMode = () => {
               backgroundColor: TrafficLightColors[directions.NORTH.goStatus],
             },
           ]}
-          onPress={() => handleDirectionPress("NORTH")}
-          //disabled={isDirectionDisabled('NORTH')}
+          onPress={() => handleDirectionPress('NORTH')}
         >
           <Text style={styles.buttonText}>↑</Text>
         </TouchableOpacity>
@@ -85,8 +82,7 @@ const ManualMode = () => {
                 backgroundColor: TrafficLightColors[directions.WEST.goStatus],
               },
             ]}
-            onPress={() => handleDirectionPress("WEST")}
-            //disabled={isDirectionDisabled('WEST')}
+            onPress={() => handleDirectionPress('WEST')}
           >
             <Text style={styles.buttonText}>←</Text>
           </TouchableOpacity>
@@ -98,13 +94,12 @@ const ManualMode = () => {
                 backgroundColor: TrafficLightColors[directions.WEST.leftStatus],
               },
             ]}
-            onPress={() => handleDirectionPress("WEST", true)}
-            //disabled={isDirectionDisabled('WEST', true)}
+            onPress={() => handleDirectionPress('WEST', true)}
           >
             <Text
               style={[
                 styles.buttonTextLeft,
-                { transform: [{ scaleX: -1 }, { rotate: "90deg" }] },
+                { transform: [{ scaleX: -1 }, { rotate: '90deg' }] },
               ]}
             >
               ➦
@@ -121,13 +116,12 @@ const ManualMode = () => {
                 backgroundColor: TrafficLightColors[directions.EAST.leftStatus],
               },
             ]}
-            onPress={() => handleDirectionPress("EAST", true)}
-            //disabled={isDirectionDisabled('EAST', true)}
+            onPress={() => handleDirectionPress('EAST', true)}
           >
             <Text
               style={[
                 styles.buttonTextLeft,
-                { transform: [{ scaleX: -1 }, { rotate: "-90deg" }] },
+                { transform: [{ scaleX: -1 }, { rotate: '-90deg' }] },
               ]}
             >
               ➦
@@ -141,8 +135,7 @@ const ManualMode = () => {
                 backgroundColor: TrafficLightColors[directions.EAST.goStatus],
               },
             ]}
-            onPress={() => handleDirectionPress("EAST")}
-            //disabled={isDirectionDisabled('EAST')}
+            onPress={() => handleDirectionPress('EAST')}
           >
             <Text style={styles.buttonText}>→</Text>
           </TouchableOpacity>
@@ -158,8 +151,7 @@ const ManualMode = () => {
               backgroundColor: TrafficLightColors[directions.SOUTH.goStatus],
             },
           ]}
-          onPress={() => handleDirectionPress("SOUTH")}
-          //disabled={isDirectionDisabled('SOUTH')}
+          onPress={() => handleDirectionPress('SOUTH')}
         >
           <Text style={styles.buttonText}>↓</Text>
         </TouchableOpacity>
@@ -171,8 +163,7 @@ const ManualMode = () => {
               backgroundColor: TrafficLightColors[directions.SOUTH.leftStatus],
             },
           ]}
-          onPress={() => handleDirectionPress("SOUTH", true)}
-          //disabled={isDirectionDisabled('SOUTH', true)}
+          onPress={() => handleDirectionPress('SOUTH', true)}
         >
           <Text style={styles.buttonTextLeft}>➦</Text>
         </TouchableOpacity>
@@ -186,48 +177,46 @@ export default ManualMode;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: 300,
   },
   buttonRow: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
     width: 100,
     marginBottom: 0,
-    alignItems: "center",
+    alignItems: 'center',
   },
   buttonCol: {
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: 'column',
+    justifyContent: 'center',
     width: 100,
     marginBottom: 0,
-    alignItems: "center",
+    alignItems: 'center',
   },
   button: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 50,
     height: 50,
     borderRadius: 30,
     margin: 5,
     borderWidth: 2,
-    backgroundColor: "#D3D3D3", // Light gray background color for buttons
+    backgroundColor: '#D3D3D3', // Light gray background color for buttons
   },
   buttonText: {
-    color: "black", // Black text for better contrast
+    color: 'black', // Black text for better contrast
     fontSize: 24,
   },
   buttonTextLeft: {
-    color: "black", // Black text for better contrast
+    color: 'black', // Black text for better contrast
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     paddingBottom: 5,
   },
 });
-
-

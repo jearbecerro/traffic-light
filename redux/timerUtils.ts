@@ -1,7 +1,6 @@
-import { conflictMapping, Directions, Statuses } from "@/constants";
-import { IDirectionState, ITimerState } from "./timerSlice";
+import { conflictMapping, Directions, Statuses } from '@/constants';
+import { IDirectionState, ITimerState } from './timerSlice';
 
-// Utility function to shift the order of directions
 export const shiftOrder = (order: (keyof typeof Directions)[]) => {
   const shiftedOrder = [...order];
   const shiftedDirection = shiftedOrder.shift();
@@ -12,21 +11,24 @@ export const shiftOrder = (order: (keyof typeof Directions)[]) => {
 };
 
 export const resetTrafficLightState = (
-  directions: ITimerState["directions"]
+  directions: ITimerState['directions']
 ) => {
   return Object.keys(directions).reduce<
     Record<keyof typeof Directions, IDirectionState>
-  >((newState, directionKey) => {
-    const key = directionKey as keyof typeof Directions;
-    newState[key] = {
-      ...directions[key],
-      greenCountdown: 0,
-      leftTurnCountdown: 0,
-      goStatus: Statuses.STOP,
-      leftStatus: Statuses.STOP,
-    };
-    return newState;
-  }, {} as Record<keyof typeof Directions, IDirectionState>);
+  >(
+    (newState, directionKey) => {
+      const key = directionKey as keyof typeof Directions;
+      newState[key] = {
+        ...directions[key],
+        greenCountdown: 0,
+        leftTurnCountdown: 0,
+        goStatus: Statuses.STOP,
+        leftStatus: Statuses.STOP,
+      };
+      return newState;
+    },
+    {} as Record<keyof typeof Directions, IDirectionState>
+  );
 };
 
 // Utility function to reset timers based on the current direction order
@@ -164,8 +166,8 @@ export const allowLeftTurn = (state: ITimerState) => {
   }
 
   conflicts.forEach((conflict) => {
-    const baseDir = conflict.replace("_LEFT", "") as keyof typeof Directions;
-    const isConflictLeft = conflict.includes("_LEFT");
+    const baseDir = conflict.replace('_LEFT', '') as keyof typeof Directions;
+    const isConflictLeft = conflict.includes('_LEFT');
 
     if (!activeDirections.left.includes(baseDir)) {
       if (isConflictLeft) {
@@ -205,8 +207,8 @@ export const stopConflictingDirections = (
   isLeft: boolean
 ) => {
   conflicts.forEach((conflict) => {
-    const baseDir = conflict.replace("_LEFT", "") as keyof typeof Directions;
-    const isConflictLeft = conflict.includes("_LEFT");
+    const baseDir = conflict.replace('_LEFT', '') as keyof typeof Directions;
+    const isConflictLeft = conflict.includes('_LEFT');
 
     if (!isLeft || !activeDirections.includes(baseDir)) {
       if (isConflictLeft) {

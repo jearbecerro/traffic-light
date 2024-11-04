@@ -1,10 +1,10 @@
-import { IDirectionState, ITimerState } from "@/redux/timerSlice";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { IDirectionState, ITimerState } from '@/redux/timerSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getDirectionSettings = async (): Promise<
-  ITimerState["directions"] | null
+  ITimerState['directions'] | null
 > => {
-  const res = await AsyncStorage.getItem("trafficLightSettings");
+  const res = await AsyncStorage.getItem('trafficLightSettings');
   if (res) {
     return JSON.parse(res);
   } else return null;
@@ -15,7 +15,7 @@ export const setDirectionSettings = async (
 ): Promise<boolean> => {
   try {
     await AsyncStorage.setItem(
-      "trafficLightSettings",
+      'trafficLightSettings',
       JSON.stringify(settings)
     );
     return true;

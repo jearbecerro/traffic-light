@@ -1,9 +1,7 @@
-import TrafficLightSettings from "@/components/TrafficLightSettings";
+import TrafficLightSettings from '@/components/TrafficLightSettings';
 
 const Settings = () => {
-  return (
-    <TrafficLightSettings />
-  );
+  return <TrafficLightSettings />;
 };
 
 export default Settings;

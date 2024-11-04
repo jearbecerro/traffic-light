@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,11 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
-} from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { IDirectionState } from "@/redux/timerSlice";
-import { Statuses } from "@/constants";
-import { setDirectionSettings } from "@/utils/storage";
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IDirectionState } from '@/redux/timerSlice';
+import { Statuses } from '@/constants';
+import { setDirectionSettings } from '@/utils/storage';
 
 const initialSettings: Record<string, IDirectionState> = {
   NORTH: {
@@ -52,24 +52,23 @@ const TrafficLightSettings = () => {
   const [settings, setSettings] =
     useState<Record<string, IDirectionState>>(initialSettings);
   const [expandedDirection, setExpandedDirection] = useState<string | null>(
-    "NORTH"
+    'NORTH'
   );
 
   useEffect(() => {
     const loadSettings = async () => {
       try {
         const savedSettings = await AsyncStorage.getItem(
-          "trafficLightSettings"
+          'trafficLightSettings'
         );
         if (savedSettings) {
           setSettings(JSON.parse(savedSettings));
         }
       } catch (error) {
-        console.error("Failed to load settings:", error);
+        console.error('Failed to load settings:', error);
       }
     };
     loadSettings();
-    
   }, []);
 
   const handleInputChange = (
@@ -96,11 +95,11 @@ const TrafficLightSettings = () => {
     console.log(saved);
     if (saved) {
       Alert.alert(
-        "Settings Saved",
-        "Your traffic light settings have been saved successfully."
+        'Settings Saved',
+        'Your traffic light settings have been saved successfully.'
       );
     } else {
-      Alert.alert("Error", "Failed to save settings. Please try again.");
+      Alert.alert('Error', 'Failed to save settings. Please try again.');
     }
   };
 
@@ -153,7 +152,7 @@ const DirectionInput: React.FC<DirectionInputProps> = ({
           style={styles.input}
           keyboardType="numeric"
           value={String(settings.greenTime)}
-          onChangeText={(value) => onInputChange(direction, "greenTime", value)}
+          onChangeText={(value) => onInputChange(direction, 'greenTime', value)}
         />
       </View>
       <View style={styles.inputContainer}>
@@ -163,7 +162,7 @@ const DirectionInput: React.FC<DirectionInputProps> = ({
           keyboardType="numeric"
           value={String(settings.leftTurnTime)}
           onChangeText={(value) =>
-            onInputChange(direction, "leftTurnTime", value)
+            onInputChange(direction, 'leftTurnTime', value)
           }
         />
       </View>
@@ -174,73 +173,73 @@ const DirectionInput: React.FC<DirectionInputProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: '#f0f0f0',
   },
   mainTitle: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
     marginBottom: 20,
   },
   directionWrapper: {
-    width: "100%",
-    alignItems: "center",
+    width: '100%',
+    alignItems: 'center',
     marginBottom: 10,
   },
   directionTitleContainer: {
     padding: 10,
-    backgroundColor: "#007BFF", // Blueish background for direction title
-    borderColor: "#ccc",
+    backgroundColor: '#007BFF', // Blueish background for direction title
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 5,
-    width: "80%",
-    alignItems: "center",
+    width: '80%',
+    alignItems: 'center',
   },
   directionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff",
+    fontWeight: 'bold',
+    color: '#fff',
   },
   directionContainer: {
     padding: 15,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     elevation: 3,
-    width: "80%",
+    width: '80%',
   },
   inputContainer: {
     marginBottom: 12,
   },
   label: {
     fontSize: 14,
-    color: "#000", // Default color for labels
+    color: '#000', // Default color for labels
   },
   input: {
     height: 40,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
-    backgroundColor: "#fafafa",
+    backgroundColor: '#fafafa',
   },
   saveButton: {
     marginTop: 20,
-    backgroundColor: "#28a745", // Greenish color for the save button
+    backgroundColor: '#28a745', // Greenish color for the save button
     borderRadius: 5,
     paddingVertical: 15, // Increased padding for a bigger button
     paddingHorizontal: 30,
   },
   saveButtonText: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff", // White text for contrast
-    textAlign: "center",
+    fontWeight: 'bold',
+    color: '#fff', // White text for contrast
+    textAlign: 'center',
   },
 });
 

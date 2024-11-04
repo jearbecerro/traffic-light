@@ -7,12 +7,20 @@ interface ToggleButtonProps {
   onToggle: () => void;
 }
 
-const ToggleButton: React.FC<ToggleButtonProps> = ({ isShowingAll, onToggle }) => {
+const ToggleButton: React.FC<ToggleButtonProps> = ({
+  isShowingAll,
+  onToggle,
+}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onToggle}>
-      <View style={[styles.toggleContainer, isShowingAll ? styles.active : styles.inactive]}>
+      <View
+        style={[
+          styles.toggleContainer,
+          isShowingAll ? styles.active : styles.inactive,
+        ]}
+      >
         <Text style={styles.toggleText}>
-          {isShowingAll ? "Show Active Timer" : "Show All Timers"}
+          {isShowingAll ? 'Show Active Timer' : 'Show All Timers'}
         </Text>
       </View>
     </TouchableOpacity>

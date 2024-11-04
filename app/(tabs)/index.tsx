@@ -1,7 +1,6 @@
-
-import FourWayIntersection from "@/components/4WayIntersection";
-import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import FourWayIntersection from '@/components/4WayIntersection';
+import React from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 
 const Home = () => {
   return (
@@ -14,8 +13,8 @@ const Home = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    backgroundColor: "#f0f0f0",
-    justifyContent: "center",
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
     padding: 10,
   },
 });

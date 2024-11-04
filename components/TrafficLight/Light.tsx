@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 
 interface LightProps {
-  type: "GO" | "STOP" | "CAUTION";
+  type: 'GO' | 'STOP' | 'CAUTION';
   active: boolean;
   doBlink?: boolean;
 }
 
 const Light: React.FC<LightProps> = ({ type, active, doBlink = false }) => {
   const colors: Record<string, string> = {
-    GO: "lightgreen",
-    STOP: "#ff0500",
-    CAUTION: "#ffae42",
+    GO: 'lightgreen',
+    STOP: '#ff0500',
+    CAUTION: '#ffae42',
   };
 
   const [opacity, setOpacity] = useState<number>(active ? 1 : 0.5);
@@ -28,7 +28,7 @@ const Light: React.FC<LightProps> = ({ type, active, doBlink = false }) => {
 
     if (doBlink) {
       const timeoutId = setTimeout(() => {
-        setIsBlinking(false); 
+        setIsBlinking(false);
       }, 2800);
       return () => clearTimeout(timeoutId);
     }
@@ -43,7 +43,7 @@ const Light: React.FC<LightProps> = ({ type, active, doBlink = false }) => {
         setOpacity((prev) => (prev === 1 ? 0.5 : 1));
       }, 250);
     } else {
-      setOpacity(active ? 1 : 0.5); 
+      setOpacity(active ? 1 : 0.5);
     }
 
     return () => {
@@ -52,9 +52,7 @@ const Light: React.FC<LightProps> = ({ type, active, doBlink = false }) => {
   }, [isBlinking, active]);
 
   return (
-    <View
-      style={[styles.light, { backgroundColor: colors[type], opacity }]}
-    />
+    <View style={[styles.light, { backgroundColor: colors[type], opacity }]} />
   );
 };
 

@@ -1,6 +1,6 @@
-import { DirectionLabels } from "@/constants";
-import { IDirections } from "@/interfaces";
-import { StyleSheet, Text, View } from "react-native";
+import { DirectionLabels } from '@/constants';
+import { IDirections } from '@/interfaces';
+import { StyleSheet, Text, View } from 'react-native';
 
 const DirectionSequence = ({ orders }: { orders: (keyof IDirections)[] }) => {
   const currentDirection = DirectionLabels[orders[0]];
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
   orderContainer: {
     paddingVertical: 10,
     paddingHorizontal: 15,
-    backgroundColor: "#f8f9fa",
+    backgroundColor: '#f8f9fa',
     borderRadius: 8,
-    width: "90%",
-    alignItems: "center",
+    width: '90%',
+    alignItems: 'center',
     marginTop: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
@@ -43,38 +43,38 @@ const styles = StyleSheet.create({
   },
   orderTitle: {
     fontSize: 16,
-    fontWeight: "600",
-    color: "#333",
+    fontWeight: '600',
+    color: '#333',
     marginBottom: 5,
   },
   orderRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 4,
   },
   orderItem: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   orderFacing: {
     fontSize: 16,
-    color: "#007BFF",
+    color: '#007BFF',
   },
   arrow: {
     fontSize: 16,
-    color: "#6c757d",
+    color: '#6c757d',
     marginHorizontal: 2,
   },
   highlight: {
-    fontWeight: "700",
-    color: "#0056b3",
-    textDecorationLine: "underline",
+    fontWeight: '700',
+    color: '#0056b3',
+    textDecorationLine: 'underline',
   },
   orderDescription: {
     fontSize: 12,
-    color: "#555",
+    color: '#555',
     marginTop: 5,
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 18,
   },
 });
